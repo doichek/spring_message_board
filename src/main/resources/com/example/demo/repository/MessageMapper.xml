@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.MessageMapper">
+
+
+    <select id="findAll" resultType="com.example.demo.entity.Message">
+        SELECT * FROM messages
+    </select>
+
+
+    <select id="getMessage" parameterType="int" resultType="com.example.demo.entity.Message">
+        SELECT * FROM messages where id = #{id}
+    </select>
+
+
+    <insert id="insert" parameterType="com.example.demo.entity.Message" keyProperty="id" useGeneratedKeys="true">
+        insert into messages(title,content,created_at,updated_at) values(#{title},#{content},#{createdAt},#{updatedAt})
+    </insert>
+
+    <update id="update" parameterType="com.example.demo.entity.Message">
+        update messages
+        <set>
+            title = #{title},
+            content = #{content},
+            updated_at = #{updatedAt},
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from messages
+        where id = #{id}
+    </delete>
+
+</mapper>

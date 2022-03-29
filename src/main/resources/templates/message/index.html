@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>メッセージボード</title>
+<link href="/css/list.css" rel="stylesheet"></link>
+<meta charset="utf-8" />
+</head>
+<body>
+
+    <p th:if="${complete}" th:text="${complete}"></p>
+    <h1>メッセージ情報一覧</h1>
+
+
+            <table>
+                <tr th:each="obj : ${list}">
+                    <td th:text=${obj.id}></td>
+                    <td th:text=${obj.title}></td>
+                    <td th:text=${obj.content}></td>
+                    <td th:text=${obj.updatedAt}></td>
+                    <td th:text=${obj.createdAt}></td>
+                    <td><a type="button" th:href="@{/message/show/{id}(id=${obj.id})}">詳細</a></td>
+
+                </tr>
+            </table>
+            <a type="button" th:href="@{/message/newEntry/}">新規</a>
+
+</body>
+</html>

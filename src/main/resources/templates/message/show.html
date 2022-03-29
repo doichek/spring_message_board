@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>メッセージボード</title>
+<link href="/css/list.css" rel="stylesheet"></link>
+<meta charset="utf-8" />
+</head>
+<body>
+    <h1>メッセージ情報の詳細</h1>
+
+
+      <table th:object="${messageForm}">
+
+            <tr>
+                <th class="cell_title">タイトル</th>
+                <td th:text="*{title}"></td>
+            </tr>
+            <tr>
+                <th class="cell_title">内容</th>
+                <td th:text="*{content}"></td>
+            </tr>
+
+        </table>
+        <a type="button" th:href="@{/message/edit/{id}(id=*{id})}">編集</a>
+
+
+</body>
+</html>
